@@ -32,7 +32,7 @@
                     $_SESSION['nome'] = $linha['nome'];
                 }
                 $conexao->close();
-                echo "<script language= 'JavaScript'>Chat.href='Salas.php'</script>";
+                echo "<script language= 'JavaScript'>Salas.href='Salas.php'</script>";
             }
             else
             {
