@@ -33,7 +33,7 @@ function BuscaMSala($dono)
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['nome']."&id=".$linha['id'];
+                $dados = "?nome=".$linha['nome']."&id=".$linha['id']."&dono=".$linha['id'];
                 echo "<a href='Chat.php".$dados."'>".$linha['nome']."</a>";
                 echo "<br>";
             }
@@ -53,7 +53,8 @@ function BuscaOSala($dono)
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['nome']."&id=".$linha['id'];
+                $dados = "?nome=".$linha['nome']."&id=".$linha['id']."&dono=".$linha['id'];
+                echo "Sala de ".$linha['dono']." ";
                 echo "<a href='Chat.php".$dados."'>".$linha['nome']."</a>";
                 echo "<br>";
             }
