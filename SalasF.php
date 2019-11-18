@@ -29,12 +29,12 @@ function BuscaMSala($dono)
     }
     else
     {
-        $sql = "SELECT s.id, s.nome, s.dono FROM sala s WHERE s.dono = '$dono'";
+        $sql = "SELECT s.id, s.nome, u.nome, s.dono FROM sala s join Usuarios u on (u.id = s.dono) WHERE s.dono = '$dono'";
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['nome']."&id=".$linha['id']."&dono=".$linha['id'];
-                echo "<a href='Chat.php".$dados."'>".$linha['nome']."</a>";
+                $dados = "?nome=".$linha['s.nome']."&id=".$linha['s.id']."&dono=".$linha['s.dono']."&dononome=".$linha['u.nome'];
+                echo "<a href='Chat.php".$dados."'>".$linha['s.nome']."</a>";
                 echo "<br>";
             }
         }
@@ -49,13 +49,13 @@ function BuscaOSala($dono)
     }
     else
     {
-        $sql = "SELECT s.id, s.nome, s.dono FROM sala s WHERE s.dono != '$dono'";
+        $sql = "SELECT s.id, s.nome, u.nome, s.dono FROM sala s join Usuarios u on (u.id = s.dono) WHERE s.dono = '$dono'";
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['nome']."&id=".$linha['id']."&dono=".$linha['id'];
-                echo "Sala de ".$linha['dono']." ";
-                echo "<a href='Chat.php".$dados."'>".$linha['nome']."</a>";
+                $dados = "?nome=".$linha['s.nome']."&id=".$linha['s.id']."&dono=".$linha['s.dono']."&dononome=".$linha['u.nome'];
+                echo "Sala de ".$linha['u.nome']." ";
+                echo "<a href='Chat.php".$dados."'>".$linha['s.nome']."</a>";
                 echo "<br>";
             }
         }

@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
     <?php
-    if(!isset($_SESSION['id']))
-    {
-        echo "<script language= 'JavaScript'>location.href='Login.php'</script>";
-    }
-    else if(isset($_GET['nome']) && isset($_GET['id']) && isset($_GET['dono']))
+    if(isset($_SESSION['id']) && isset($_GET['nome']) && isset($_GET['id']) && isset($_GET['dono']))
     {
         $salanome = $_GET['nome'];
         $salaid = $_GET['id'];
         $saladono = $_GET['dono'];
+    }
+    else
+    {
+        echo "<script language= 'JavaScript'>location.href='Login.php'</script>";
     }
     ?>
 </head>

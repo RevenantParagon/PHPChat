@@ -18,7 +18,7 @@
     if(isset($_POST['nome']) && $_POST['nome'] != "")
     {
         CriaSala($_POST['nome'], $_SESSION['id']);
-        echo "<script language= 'JavaScript'>location.href='Login.php'</script>";
+        echo "<script language= 'JavaScript'>location.href='index.php'</script>";
     }
     ?>
     <label for="title">Criar sala</label><br>
