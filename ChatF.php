@@ -1,4 +1,5 @@
 <?php
+session_start();
 function BuscaMSG($salaid)
 {
     $conexao = new mysqli("localhost", "root", "toor", "chat");
