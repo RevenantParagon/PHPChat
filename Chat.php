@@ -18,10 +18,14 @@
     {
         echo "<script language= 'JavaScript'>location.href='Login.php'</script>";
     }
+    require("ChatF.php");
     ?>
 </head>
 <body>
     <label for="welcome">Bem Vindo a Sala <?php echo "$salanome"?> Criada por <?php echo "$dononome"?></label>
-    
+    <?php
+    BuscaMSG($salaid);
+    ?>
+    <form action="#" method="post"></form>
 </body>
 </html>

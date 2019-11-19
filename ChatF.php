@@ -1,5 +1,5 @@
 <?php
-function Chat($salaid)
+function BuscaMSG($salaid)
 {
     $conexao = new mysqli("localhost", "root", "toor", "chat");
     if( $conexao->connect_error ) {
@@ -7,13 +7,18 @@ function Chat($salaid)
     }
     else
     {
-        $sql = "SELECT m.id, m.remetente, m.mensagem, m.sala FROM Mensagens s WHERE m.sala = '$salaid'";
+        $sql = "SELECT m.remetente as 'remetenteid', m.mensagem as 'mensagem', u.nome as 'remetentenome' FROM Mensagens m join Usuarios u on (u.id = m.remetente) WHERE m.sala = '$salaid'";
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['nome']."&id=".$linha['id'];
-                echo "<a href='Chat.php".$dados."'>".$linha['nome']."</a>";
-                echo "<br>";
+                if($linha['remetenteid'] != $_SESSION['id'])
+                {
+                    echo "<div style='text-align:right;background-color:yellow'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>"
+                }
+                else
+                {
+                    echo "<div style='text-align:left;background-color:white'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>"
+                }
             }
         }
     }
