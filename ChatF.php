@@ -11,13 +11,13 @@ function BuscaMSG($salaid)
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                if($linha['remetenteid'] != $_SESSION['id'])
+                if($linha['remetenteid'] == $_SESSION['id'])
                 {
                     echo "<div style='text-align:right;background-color:yellow'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>";
                 }
                 else
                 {
-                    echo "<div style='text-align:left;background-color:white'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>";
+                    echo "<div style='text-align:left;background-color:grey'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>";
                 }
             }
         }
