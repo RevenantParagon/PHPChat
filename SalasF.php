@@ -29,12 +29,12 @@ function BuscaMSala($dono)
     }
     else
     {
-        $sql = "SELECT s.id, s.nome, u.nome, s.dono FROM sala s join Usuarios u on (u.id = s.dono) WHERE s.dono = '$dono'";
+        $sql = "SELECT s.id as 'salaid', s.nome as 'salanome', u.nome as 'dononome', s.dono as 'donoid' FROM sala s join Usuarios u on (u.id = s.dono) WHERE s.dono ='$dono'";
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['s.nome']."&id=".$linha['s.id']."&dono=".$linha['s.dono']."&dononome=".$linha['u.nome'];
-                echo "<a href='Chat.php".$dados."'>".$linha['s.nome']."</a>";
+                $dados = "?nome=".$linha['salanome']."&id=".$linha['salaid']."&dono=".$linha['donoid']."&dononome=".$linha['dononome'];
+                echo "<a href='Chat.php".$dados."'>".$linha['salanome']."</a>";
                 echo "<br>";
             }
         }
@@ -49,13 +49,13 @@ function BuscaOSala($dono)
     }
     else
     {
-        $sql = "SELECT s.id, s.nome, u.nome, s.dono FROM sala s join Usuarios u on (u.id = s.dono) WHERE s.dono = '$dono'";
+        $sql = "SELECT s.id as 'salaid', s.nome as 'salanome', u.nome as 'dononome', s.dono as 'donoid' FROM sala s join Usuarios u on (u.id = s.dono) WHERE s.dono ='!$dono'";
         $result = $conexao->query($sql);
         if ($result->num_rows > 0) {
             while($linha = $result->fetch_assoc()) {
-                $dados = "?nome=".$linha['s.nome']."&id=".$linha['s.id']."&dono=".$linha['s.dono']."&dononome=".$linha['u.nome'];
-                echo "Sala de ".$linha['u.nome']." ";
-                echo "<a href='Chat.php".$dados."'>".$linha['s.nome']."</a>";
+                $dados = "?nome=".$linha['salanome']."&id=".$linha['salaid']."&dono=".$linha['donoid']."&dononome=".$linha['dononome'];
+                echo "Sala de ".$linha['dononome']." ";
+                echo "<a href='Chat.php".$dados."'>".$linha['salanome']."</a>";
                 echo "<br>";
             }
         }
