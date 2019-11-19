@@ -1,5 +1,4 @@
 <?php
-session_start();
 function BuscaMSG($salaid)
 {
     $conexao = new mysqli("localhost", "root", "toor", "chat");
@@ -14,11 +13,11 @@ function BuscaMSG($salaid)
             while($linha = $result->fetch_assoc()) {
                 if($linha['remetenteid'] != $_SESSION['id'])
                 {
-                    echo "<div style='text-align:right;background-color:yellow'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>"
+                    echo "<div style='text-align:right;background-color:yellow'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>";
                 }
                 else
                 {
-                    echo "<div style='text-align:left;background-color:white'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>"
+                    echo "<div style='text-align:left;background-color:white'>".$linha['remetentenome']."<br>".$linha['mensagem']."</div>";
                 }
             }
         }
