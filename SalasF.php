@@ -13,7 +13,6 @@ function CriaSala($nome, $dono)
         if ($conexao->query($sql) === TRUE)
         {
             $conexao->close();
-            
         }
         else
         {

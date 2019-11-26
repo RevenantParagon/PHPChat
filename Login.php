@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-    if(isset($_SESSION['id']) && isset($_SESSION['nome']))
+    if(isset($_SESSION['id']))
     {
         echo "<script language= 'JavaScript'>location.href='Salas.php'</script>";
     }
@@ -32,13 +32,13 @@
                     $_SESSION['nome'] = $linha['nome'];
                 }
                 $conexao->close();
-                echo "<script language= 'JavaScript'>Salas.href='Salas.php'</script>";
+                echo "<script language= 'JavaScript'>location.href='Salas.php'</script>";
             }
             else
             {
                 $conexao->close();
                 session_unset();
-                echo "<script language= 'JavaScript'>Login.href='Login.php'</script>";
+                echo "<script language= 'JavaScript'>location.href='Login.php'</script>";
             }
         }
     }
