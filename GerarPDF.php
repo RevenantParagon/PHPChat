@@ -1,19 +1,19 @@
 <?php
-require_once 'dompdf/lib/html5lib/Parser.php';
-require_once 'dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
-require_once 'dompdf/lib/php-svg-lib/src/autoload.php';
-require_once 'dompdf/src/Autoloader.php';
+require_once 'pdf/lib/html5lib/Parser.php';
+require_once 'pdf/lib/php-font-lib/src/FontLib/Autoloader.php';
+require_once 'pdf/lib/php-svg-lib/src/autoload.php';
+require_once 'pdf/src/Autoloader.php';
 Dompdf\Autoloader::register();
 // Facilitar a referência à Dompdf
 use Dompdf\Dompdf;
 // cria uma instância e usa a classe dompdf
-$dompdf = new Dompdf();
-$dompdf->loadHtml($_POST['gerar']);
+$pdf = new Dompdf();
+$pdf->loadHtml($_POST['gerar']);
 // (Opcional) Ajusta o tamanho e orientação do papel
 // outra opção é 'portrait'
-$dompdf->setPaper('A4', 'landscape');
+$pdf->setPaper('A4', 'landscape');
 // Renderiza o HTML como PDF
-$dompdf->render();
+$pdf->render();
 // Gera a saída no navegador.
-$dompdf->stream();
+$pdf->stream();
 ?>
